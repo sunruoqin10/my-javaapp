@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+</head>
+<body>
+<div id="app">
+    <h2>Welcome Google</h2>
+    <el-table :data="tableData" style="width: 100%">
+        <el-table-column prop="name" label="Name" width="180" />
+        <el-table-column prop="age" label="Age" width="180" />
+        <el-table-column prop="city" label="City" />
+    </el-table>
+</div>
+
+<script src="https://unpkg.com/vue@3"></script>
+<script src="https://unpkg.com/element-plus"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                tableData: [{
+                    name: 'John Doe', age: 30, city: 'New York'
+                }, {
+                    name: 'Jane Smith', age: 25, city: 'London'
+                }]
+            }
+        }
+    });
+    app.use(ElementPlus);
+    app.mount('#app');
+</script>
+</body>
+</html>
