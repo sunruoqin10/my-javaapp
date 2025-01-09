@@ -1,10 +1,13 @@
 
 package com.example.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -29,5 +32,21 @@ public class LoginController {
     @GetMapping("/welcome")
     public String welcomePage() {
         return "welcome";
+    }
+
+    @GetMapping("/api/users")
+    @ResponseBody
+    public List<Map<String, Object>> getUsers() {
+        List<Map<String, Object>> users = new ArrayList<>();
+        
+        users.add(Map.of(
+            "name", "John Doe",
+            "age", 30,
+            "city", "New York"));
+        users.add(Map.of(
+            "name", "Jane Doe",
+            "age", 25,
+            "city", "Los Angeles"));
+        return users;
     }
 }
